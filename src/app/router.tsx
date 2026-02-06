@@ -1,15 +1,15 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { LoginPage } from '@modules/auth';
-import { AppLayout } from '@shared/ui';
 import { AuthGuard } from './guards/AuthGuard';
 import { GuestGuard } from './guards/GuestGuard';
+import { AppShell } from './components/Shell/AppShell';
 
 /**
  * Main Application Router.
  * 
- * According to Phase 5.3:
+ * According to Phase 5.3 & 5.5:
  * - Protects private routes via AuthGuard.
- * - Handles guest-only routes via GuestGuard.
+ * - Connects layout to auth state via AppShell.
  */
 export const router = createBrowserRouter([
   {
@@ -25,12 +25,13 @@ export const router = createBrowserRouter([
     element: <AuthGuard />,
     children: [
       {
-        path: '/',
-        element: (
-          <AppLayout>
-            <div>Dashboard / Home (PENDENTE)</div>
-          </AppLayout>
-        ),
+        element: <AppShell />,
+        children: [
+          {
+            path: '/',
+            element: <div>Dashboard / Home (PENDENTE)</div>,
+          },
+        ],
       },
       {
         path: '*',
