@@ -162,3 +162,24 @@ DÍVIDA TÉCNICA / PENDÊNCIAS:
 COMANDO DE VALIDAÇÃO:
 npx tsc -p tsconfig.app.json --noEmit
 SESSION_LOG_END
+
+SESSION_LOG_START | Versão: FASE-2.2 | Data: 06/02/2026
+ARQUIVOS CRIADOS/MODIFICADOS:
+- src/api/client.ts
+
+RESUMO TÉCNICO:
+Definição dos interceptors contratuais no apiClient.
+Inclusão de interceptor de request para Authorization (Bearer).
+Inclusão de interceptor de response para tratamento de erros (401, 403, 429, 5xx).
+Handlers marcados explicitamente como "PENDENTE" conforme escopo da fase.
+Nenhuma lógica de sessão ou redirect implementada.
+Validação de tipos concluída com sucesso.
+
+DÍVIDA TÉCNICA / PENDÊNCIAS:
+- Implementação funcional do logout em 401.
+- Implementação de retry com backoff exponencial para 429 e 5xx.
+- Recuperação real do token JWT no interceptor de request.
+
+COMANDO DE VALIDAÇÃO:
+npx tsc -p tsconfig.app.json --noEmit
+SESSION_LOG_END
