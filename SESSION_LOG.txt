@@ -366,3 +366,23 @@ DÍVIDA TÉCNICA / PENDÊNCIAS:
 COMANDO DE VALIDAÇÃO:
 npm run build
 SESSION_LOG_END
+
+SESSION_LOG_START | Versão: FASE-3.5 | Data: 06/02/2026
+ARQUIVOS CRIADOS/MODIFICADOS:
+- src/state/usePolling.ts
+
+RESUMO TÉCNICO:
+Implementação do hook genérico usePolling em /src/state/usePolling.ts.
+O hook utiliza TanStack Query para gerenciar requisições intervaladas.
+Garantida a integração com AbortController (signal) para cancelamento automático de requisições.
+Configuração de refetchInterval dinâmica, respeitando o status de autenticação (isAuthenticated) e a flag enabled.
+Respeito à política de não execução sem sessão válida.
+Validação de tipos e build concluídos com sucesso.
+
+DÍVIDA TÉCNICA / PENDÊNCIAS:
+- Implementação de lógica de parada automática baseada no conteúdo da resposta (ex: status: 'COMPLETED').
+- Integração em domínios reais (PDF de Invoice, Exportação de Stock).
+
+COMANDO DE VALIDAÇÃO:
+npx tsc -p tsconfig.app.json --noEmit
+SESSION_LOG_END
