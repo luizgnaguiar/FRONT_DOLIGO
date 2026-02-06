@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useInvoices } from '../../hooks/useInvoices';
-import { VirtualTable, type Column, Text, Skeleton, Button } from '@shared/ui';
+import { VirtualTable, type Column, Text, Skeleton, Button, Can } from '@shared/ui';
 import type { InvoiceDTO } from '@api/dtos/invoice';
 import { mapErrorCodeToMessage } from '@api/errors';
 import styles from './InvoiceList.module.css';
@@ -9,11 +9,9 @@ import styles from './InvoiceList.module.css';
 /**
  * InvoiceListPage.
  * 
- * According to Phase 6.2:
+ * According to Phase 6.2 & 6.7:
  * - Table with mandatory virtualization.
- * - Server-driven pagination.
- * - Loading states (Skeleton).
- * - Error handling via ErrorMap.
+ * - RBAC integration for actions.
  */
 
 export const InvoiceListPage: React.FC = () => {
@@ -62,13 +60,15 @@ export const InvoiceListPage: React.FC = () => {
     {
       header: 'Ações',
       accessor: (item) => (
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => navigate(`/invoices/${item.id}/edit`)}
-        >
-          Editar
-        </Button>
+        <Can anyRoles={['admin', 'manager']}>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => navigate(`/invoices/${item.id}/edit`)}
+          >
+            Editar
+          </Button>
+        </Can>
       ),
       width: '100px',
     },
@@ -86,9 +86,11 @@ export const InvoiceListPage: React.FC = () => {
     <div className={styles.container}>
       <header className={styles.header}>
         <Text size="2xl" weight="bold">Invoices</Text>
-        <Button size="sm" onClick={() => navigate('/invoices/new')}>
-          Nova Invoice
-        </Button>
+        <Can anyRoles={['admin', 'manager']}>
+          <Button size="sm" onClick={() => navigate('/invoices/new')}>
+            Nova Invoice
+          </Button>
+        </Can>
       </header>
 
       <main className={styles.content}>
