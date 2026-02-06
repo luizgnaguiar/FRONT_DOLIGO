@@ -6,9 +6,14 @@
 
 import type { ID } from './common';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface StockItemDTO extends ID {
-  // PENDENTE: Definir campos (sku, name, quantity, location)
+  sku: string;
+  name: string;
+  quantity: number;
+  unit: string;
+  location?: string;
+  minStock?: number;
+  updatedAt: string;
 }
 
 export interface StockMovementDTO extends ID {

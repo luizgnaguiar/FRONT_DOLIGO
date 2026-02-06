@@ -12,6 +12,12 @@ export const Sidebar: React.FC = () => {
         >
           Invoices
         </NavLink>
+        <NavLink 
+          to="/stock" 
+          className={({ isActive }) => isActive ? `${styles.navLink} ${styles.active}` : styles.navLink}
+        >
+          Estoque
+        </NavLink>
         {/* PENDENTE: Outros links de domínios */}
       </nav>
     </aside>

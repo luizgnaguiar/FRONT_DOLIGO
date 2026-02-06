@@ -8,7 +8,13 @@ import { z } from 'zod';
 
 export const StockItemSchema = z.object({
   id: z.string().uuid(),
-  // PENDENTE: sku, name, etc.
+  sku: z.string().min(1),
+  name: z.string().min(1),
+  quantity: z.number(),
+  unit: z.string(),
+  location: z.string().optional(),
+  minStock: z.number().optional(),
+  updatedAt: z.string().datetime(),
 });
 
 export const StockMovementTypeSchema = z.enum(['IN', 'OUT', 'ADJUSTMENT']);
