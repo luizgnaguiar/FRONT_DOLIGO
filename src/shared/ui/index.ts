@@ -4,4 +4,5 @@ export * from './Text';
 export * from './Spinner';
 export * from './Skeleton';
 export * from './Icon';
+export * from './Can';
 export * from './Layout';
