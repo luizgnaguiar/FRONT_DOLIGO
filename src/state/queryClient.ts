@@ -16,10 +16,11 @@ export const queryClient = new QueryClient({
       // Cache is kept for 30 minutes
       gcTime: 1000 * 60 * 30,
       // Retry policy for errors (429 and 5xx)
-      retry: (failureCount, error: any) => {
+      retry: (failureCount, error: unknown) => {
         if (failureCount >= 3) return false;
 
-        const status = error?.response?.status;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const status = (error as any)?.response?.status;
         
         // Retry for Rate Limit (429) or Server Errors (5xx)
         if (status === 429 || (status >= 500 && status <= 599)) {

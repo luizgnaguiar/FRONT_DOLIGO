@@ -11,6 +11,7 @@ export interface InvoiceDTO extends ID {
   status: 'DRAFT' | 'ISSUED' | 'PAID' | 'CANCELLED'; // Exemplo provisório
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface CreateInvoiceDTO {
   // PENDENTE: Payload de criação
 }
