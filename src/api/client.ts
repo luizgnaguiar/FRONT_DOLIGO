@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useSessionStore } from '@state/sessionStore';
+import { queryClient } from '@state/queryClient';
 import { mapErrorCodeToMessage, type ApiErrorResponse } from './errors';
 
 /**
@@ -48,6 +49,7 @@ apiClient.interceptors.response.use(
       switch (response.status) {
         case 401:
           clearSession();
+          queryClient.clear();
           break;
         case 403:
           // PENDENTE: Log ou tratamento específico de permissão se necessário

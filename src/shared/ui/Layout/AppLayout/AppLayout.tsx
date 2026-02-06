@@ -6,15 +6,16 @@ import { MainContent } from '../MainContent/MainContent';
 
 interface AppLayoutProps {
   children: React.ReactNode;
+  renderHeaderActions?: () => React.ReactNode;
 }
 
-export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
+export const AppLayout: React.FC<AppLayoutProps> = ({ children, renderHeaderActions }) => {
   return (
     <div className={styles.wrapper}>
       <a href="#main-content" className="skip-to-content">
         Pular para o conteúdo
       </a>
-      <Header />
+      <Header renderActions={renderHeaderActions} />
       <div className={styles.body}>
         <Sidebar />
         <MainContent>
