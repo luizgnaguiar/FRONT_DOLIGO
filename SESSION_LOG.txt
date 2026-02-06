@@ -323,3 +323,26 @@ DÍVIDA TÉCNICA / PENDÊNCIAS:
 COMANDO DE VALIDAÇÃO:
 npm run build
 SESSION_LOG_END
+
+SESSION_LOG_START | Versão: FASE-3.3 | Data: 06/02/2026
+ARQUIVOS CRIADOS/MODIFICADOS:
+- package.json
+- package-lock.json
+- src/state/sessionStore.ts
+
+RESUMO TÉCNICO:
+Instalação da biblioteca Zustand para gerenciamento de estado global mínimo.
+Implementação do useSessionStore em /src/state/sessionStore.ts.
+O store gerencia JWT (token), claims decodificadas (user) e status (isAuthenticated).
+Utilização de memory storage conforme preferência contratual (stateless).
+Ações setSession e clearSession expostas para manipulação segura do estado.
+Validação de tipos e build concluídos com sucesso.
+
+DÍVIDA TÉCNICA / PENDÊNCIAS:
+- Integração do sessionStore com o interceptor do apiClient para injeção de token.
+- Integração com auth guards e rotas (fases futuras).
+- Persistência em localStorage se explicitamente exigido (atualmente apenas memória).
+
+COMANDO DE VALIDAÇÃO:
+npx tsc -p tsconfig.app.json --noEmit
+SESSION_LOG_END
