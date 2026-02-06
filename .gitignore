@@ -24,8 +24,5 @@ dist-ssr
 *.sw?
 
 # Project specific
-# Do NOT ignore .txt files that are part of the documentation
-# !AGENT_CONTRACT_FRONTEND.txt
-# !Especificação-de-Engenharia.txt
-# !SESSION_LOG.txt
-# !README.md
+
+*.txt
