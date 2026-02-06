@@ -6,6 +6,7 @@ interface SkeletonProps {
   width?: string | number;
   height?: string | number;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 export const Skeleton: React.FC<SkeletonProps> = ({
@@ -13,6 +14,7 @@ export const Skeleton: React.FC<SkeletonProps> = ({
   width,
   height,
   className = '',
+  style: propStyle,
 }) => {
   const skeletonClasses = [
     styles.skeleton,
@@ -23,6 +25,7 @@ export const Skeleton: React.FC<SkeletonProps> = ({
   const style: React.CSSProperties = {
     width: width,
     height: height,
+    ...propStyle,
   };
 
   return <div className={skeletonClasses} style={style} />;

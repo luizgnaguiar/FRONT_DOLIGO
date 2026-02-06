@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useInvoices } from '../../hooks/useInvoices';
-import { VirtualTable, type Column, Text, Skeleton } from '@shared/ui';
+import { VirtualTable, type Column, Text, Skeleton, Button } from '@shared/ui';
 import type { InvoiceDTO } from '@api/dtos/invoice';
 import { mapErrorCodeToMessage } from '@api/errors';
 import styles from './InvoiceList.module.css';
@@ -18,6 +19,7 @@ import styles from './InvoiceList.module.css';
 export const InvoiceListPage: React.FC = () => {
   const [page, setPage] = useState(1);
   const limit = 20;
+  const navigate = useNavigate();
 
   const { data, isLoading, error, isPlaceholderData } = useInvoices({
     page,
@@ -57,6 +59,19 @@ export const InvoiceListPage: React.FC = () => {
       ),
       width: '120px',
     },
+    {
+      header: 'Ações',
+      accessor: (item) => (
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => navigate(`/invoices/${item.id}/edit`)}
+        >
+          Editar
+        </Button>
+      ),
+      width: '100px',
+    },
   ];
 
   if (error) {
@@ -71,6 +86,9 @@ export const InvoiceListPage: React.FC = () => {
     <div className={styles.container}>
       <header className={styles.header}>
         <Text size="2xl" weight="bold">Invoices</Text>
+        <Button size="sm" onClick={() => navigate('/invoices/new')}>
+          Nova Invoice
+        </Button>
       </header>
 
       <main className={styles.content}>

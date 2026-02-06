@@ -1,6 +1,6 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { LoginPage } from '@modules/auth';
-import { InvoiceListPage } from '@modules/invoice';
+import { InvoiceListPage, InvoiceCreatePage, InvoiceEditPage } from '@modules/invoice';
 import { AuthGuard } from './guards/AuthGuard';
 import { GuestGuard } from './guards/GuestGuard';
 import { AppShell } from './components/Shell/AppShell';
@@ -35,6 +35,14 @@ export const router = createBrowserRouter([
           {
             path: '/invoices',
             element: <InvoiceListPage />,
+          },
+          {
+            path: '/invoices/new',
+            element: <InvoiceCreatePage />,
+          },
+          {
+            path: '/invoices/:id/edit',
+            element: <InvoiceEditPage />,
           },
         ],
       },

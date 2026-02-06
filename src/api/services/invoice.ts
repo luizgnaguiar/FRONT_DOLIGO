@@ -42,4 +42,12 @@ export const invoiceService = {
     const response = await apiClient.post<InvoiceDTO>('/invoices', data);
     return response.data;
   },
+
+  /**
+   * Update an existing invoice.
+   */
+  update: async (id: string, data: Partial<CreateInvoiceDTO>): Promise<InvoiceDTO> => {
+    const response = await apiClient.put<InvoiceDTO>(`/invoices/${id}`, data);
+    return response.data;
+  },
 };

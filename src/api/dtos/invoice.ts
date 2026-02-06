@@ -11,11 +11,21 @@ export interface InvoiceDTO extends ID {
   invoiceNumber: string;
   customerName: string;
   issueDate: string;
+  dueDate: string;
   totalAmount: number;
   status: 'DRAFT' | 'ISSUED' | 'PAID' | 'CANCELLED';
+  items: InvoiceItemDTO[];
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+export interface InvoiceItemDTO {
+  description: string;
+  quantity: number;
+  unitPrice: number;
+}
+
 export interface CreateInvoiceDTO {
-  // PENDENTE: Payload de criação
+  customerName: string;
+  issueDate: string; // YYYY-MM-DD
+  dueDate: string;   // YYYY-MM-DD
+  items: InvoiceItemDTO[];
 }
