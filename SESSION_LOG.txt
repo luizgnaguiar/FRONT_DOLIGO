@@ -230,3 +230,31 @@ DÍVIDA TÉCNICA / PENDÊNCIAS:
 COMANDO DE VALIDAÇÃO:
 npx tsc -p tsconfig.app.json --noEmit
 SESSION_LOG_END
+
+SESSION_LOG_START | Versão: FASE-2.5 | Data: 06/02/2026
+ARQUIVOS CRIADOS/MODIFICADOS:
+- package.json
+- package-lock.json
+- src/api/schemas/index.ts
+- src/api/schemas/common.ts
+- src/api/schemas/auth.ts
+- src/api/schemas/invoice.ts
+- src/api/schemas/stock.ts
+- src/api/schemas/bom.ts
+- src/api/schemas/crm.ts
+
+RESUMO TÉCNICO:
+Instalação da biblioteca Zod para validação de dados.
+Implementação dos schemas Zod em /src/api/schemas correspondentes aos DTOs definidos na fase anterior.
+Criação de schemas para domínios principais (Invoice, Stock, BOM, CRM, Auth).
+Schemas configurados para refletir a estrutura básica e tipos primitivos (string, uuid, email, enum).
+Marcação de campos não confirmados como PENDENTE ou DÍVIDA TÉCNICA.
+Validação de tipos via tsc concluída com sucesso.
+
+DÍVIDA TÉCNICA / PENDÊNCIAS:
+- Sincronização de regras de validação refinadas (regex, min/max) com o backend Go.
+- Integração dos schemas nos interceptors ou mappers para validação de runtime.
+
+COMANDO DE VALIDAÇÃO:
+npx tsc -p tsconfig.app.json --noEmit
+SESSION_LOG_END
