@@ -204,3 +204,29 @@ DÍVIDA TÉCNICA / PENDÊNCIAS:
 COMANDO DE VALIDAÇÃO:
 npx tsc -p tsconfig.app.json --noEmit
 SESSION_LOG_END
+
+SESSION_LOG_START | Versão: FASE-2.4 | Data: 06/02/2026
+ARQUIVOS CRIADOS/MODIFICADOS:
+- src/api/dtos/index.ts
+- src/api/dtos/common.ts
+- src/api/dtos/auth.ts
+- src/api/dtos/invoice.ts
+- src/api/dtos/stock.ts
+- src/api/dtos/bom.ts
+- src/api/dtos/crm.ts
+
+RESUMO TÉCNICO:
+Criação da estrutura de DTOs em /src/api/dtos.
+Implementação de interfaces base para paginação e metadados (PagedResponse, ID).
+Definição de DTOs para domínios principais (Invoice, Stock, BOM, CRM, Auth).
+Marcação explícita de campos PENDENTE de sincronização com o backend.
+Correção de imports para 'import type' (verbatimModuleSyntax).
+Validação de tipos concluída com sucesso.
+
+DÍVIDA TÉCNICA / PENDÊNCIAS:
+- Sincronização detalhada dos campos dos DTOs com a API Go real.
+- Definição exata dos Enums de status em cada domínio.
+
+COMANDO DE VALIDAÇÃO:
+npx tsc -p tsconfig.app.json --noEmit
+SESSION_LOG_END
