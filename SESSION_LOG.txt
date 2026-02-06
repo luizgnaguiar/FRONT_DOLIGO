@@ -346,3 +346,23 @@ DÍVIDA TÉCNICA / PENDÊNCIAS:
 COMANDO DE VALIDAÇÃO:
 npx tsc -p tsconfig.app.json --noEmit
 SESSION_LOG_END
+
+SESSION_LOG_START | Versão: FASE-3.4 | Data: 06/02/2026
+ARQUIVOS CRIADOS/MODIFICADOS:
+- src/api/client.ts
+
+RESUMO TÉCNICO:
+Ativação funcional dos interceptors do client HTTP.
+Integração com useSessionStore para injeção automática de JWT no header Authorization.
+Implementação de logout global automático (clearSession) ao receber status 401.
+Integração do ErrorMap centralizado, anexando a mensagem amigável (uiMessage) ao objeto de erro.
+Garantia de que retentativas para 429 e 5xx são delegadas ao TanStack Query conforme configurado na fase 3.2.
+Validação de tipos e build concluídos com sucesso.
+
+DÍVIDA TÉCNICA / PENDÊNCIAS:
+- Implementação de lógica de refresh token se exigido pelo backend futuramente.
+- Redirecionamento visual de rota após logout global (fase de roteamento).
+
+COMANDO DE VALIDAÇÃO:
+npm run build
+SESSION_LOG_END

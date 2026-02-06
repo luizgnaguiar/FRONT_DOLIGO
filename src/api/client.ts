@@ -1,14 +1,9 @@
 import axios from 'axios';
+import { useSessionStore } from '@state/sessionStore';
+import { mapErrorCodeToMessage, type ApiErrorResponse } from './errors';
 
 /**
  * Central HTTP client instance for the Doligo Frontend.
- * 
- * According to Phase 2.1:
- * - Unique instance for the entire application.
- * - Base configuration (baseURL, common headers).
- * - Global timeout.
- * 
- * Interceptors and authentication will be implemented in future phases.
  */
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
@@ -25,11 +20,12 @@ export const apiClient = axios.create({
 // REQUEST INTERCEPTOR: Authorization
 apiClient.interceptors.request.use(
   (config) => {
-    // PENDENTE: Recuperar JWT do storage (Phase 2.3+)
-    // const token = null; 
-    // if (token) {
-    //   config.headers.Authorization = `Bearer ${token}`;
-    // }
+    const { token } = useSessionStore.getState();
+    
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    
     return config;
   },
   (error) => Promise.reject(error)
@@ -40,29 +36,34 @@ apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
     const { response } = error;
+    const { clearSession } = useSessionStore.getState();
 
     if (response) {
+      const data = response.data as ApiErrorResponse;
+      const errorCode = data?.code;
+      
+      // Adiciona mensagem amigável ao objeto de erro para uso futuro na UI
+      error.uiMessage = mapErrorCodeToMessage(errorCode);
+
       switch (response.status) {
         case 401:
-          // PENDENTE: Logout global (Phase 2.3+)
-          // console.warn('Não autorizado - redirecionando para login');
+          clearSession();
           break;
         case 403:
-          // PENDENTE: Fallback de permissão
-          // console.warn('Sem permissão para esta ação');
+          // PENDENTE: Log ou tratamento específico de permissão se necessário
           break;
         case 429:
-          // PENDENTE: Retry com backoff
-          // console.warn('Muitas requisições - aguardando retry');
+          // O retry é gerenciado pelo TanStack Query (Fase 3.2)
           break;
         case 500:
         case 502:
         case 503:
         case 504:
-          // PENDENTE: Retry limitado
-          // console.warn('Erro de servidor - aguardando retry');
+          // O retry é gerenciado pelo TanStack Query (Fase 3.2)
           break;
       }
+    } else {
+      error.uiMessage = mapErrorCodeToMessage(); // Fallback para erro de rede/timeout
     }
 
     return Promise.reject(error);
