@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: var(--color-neutral-100);
+  padding: var(--spacing-4);
+}
+
+.card {
+  width: 100%;
+  max-width: 400px;
+  background-color: #ffffff;
+  padding: var(--spacing-8);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--spacing-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.errorMessage {
+  background-color: #fef2f2;
+  border: 1px solid #fee2e2;
+  padding: var(--spacing-2);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.submitButton {
+  margin-top: var(--spacing-4);
+}
