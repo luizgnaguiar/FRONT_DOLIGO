@@ -183,3 +183,24 @@ DÍVIDA TÉCNICA / PENDÊNCIAS:
 COMANDO DE VALIDAÇÃO:
 npx tsc -p tsconfig.app.json --noEmit
 SESSION_LOG_END
+
+SESSION_LOG_START | Versão: FASE-2.3 | Data: 06/02/2026
+ARQUIVOS CRIADOS/MODIFICADOS:
+- src/api/errors.ts
+
+RESUMO TÉCNICO:
+Criação do mapeamento central de erros em /src/api/errors.ts.
+Definição da interface ApiErrorResponse para padronização com o backend.
+Implementação de ErrorCode utilizando const object para compatibilidade com 'erasableSyntaxOnly'.
+Criação do ERROR_MAP vinculando códigos de erro a mensagens genéricas de UI.
+Implementação da função utilitária mapErrorCodeToMessage.
+Nenhuma dependência de React ou lógica de UI adicionada.
+Validação de tipos concluída com sucesso.
+
+DÍVIDA TÉCNICA / PENDÊNCIAS:
+- Integração do mapErrorCodeToMessage nos interceptors do client HTTP.
+- Mapeamento de erros específicos de validação de formulários (Zod).
+
+COMANDO DE VALIDAÇÃO:
+npx tsc -p tsconfig.app.json --noEmit
+SESSION_LOG_END
