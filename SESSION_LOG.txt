@@ -278,3 +278,29 @@ DÍVIDA TÉCNICA / PENDÊNCIAS:
 COMANDO DE VALIDAÇÃO:
 npm run lint && npm run build
 SESSION_LOG_END
+
+SESSION_LOG_START | Versão: FASE-3.1 | Data: 06/02/2026
+ARQUIVOS CRIADOS/MODIFICADOS:
+- package.json
+- package-lock.json
+- src/state/queryClient.ts
+- src/app/main.tsx
+
+RESUMO TÉCNICO:
+Instalação da biblioteca @tanstack/react-query para gerenciamento de estado de servidor.
+Criação da instância central 'queryClient' em /src/state/queryClient.ts com políticas globais:
+- staleTime: 5 min
+- gcTime: 30 min
+- retry: Política personalizada para evitar retentativas em erros 4xx (exceto 429).
+- refetchOnWindowFocus: desativado para evitar sobrecarga.
+Configuração do QueryClientProvider no bootstrap da aplicação (src/app/main.tsx).
+Validação de tipos e build concluídos com sucesso.
+
+DÍVIDA TÉCNICA / PENDÊNCIAS:
+- Implementação de queries e mutations de domínio (Invoice, Stock, etc.).
+- Configuração de DevTools (opcional, sob demanda).
+- Invalidação global de cache em eventos de logout.
+
+COMANDO DE VALIDAÇÃO:
+npm run build
+SESSION_LOG_END
