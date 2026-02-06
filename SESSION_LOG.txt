@@ -118,3 +118,47 @@ DÍVIDA TÉCNICA / PENDÊNCIAS:
 COMANDO DE VALIDAÇÃO:
 npm run build
 SESSION_LOG_END
+
+SESSION_LOG_START | Versão: FASE-1.5 | Data: 06/02/2026
+ARQUIVOS CRIADOS/MODIFICADOS:
+NENHUM
+
+RESUMO TÉCNICO:
+Validação final do bootstrap do repositório concluída com sucesso.
+- Execução do build de produção (npm run build) concluída sem erros (Critério FA-01).
+- Execução do linting (npm run lint) concluída sem erros, validando regras estritas de TypeScript e React.
+- Confirmação de aderência à arquitetura contratual:
+  - Estrutura de pastas /src (app, modules, api, state, shared, styles, assets) íntegra.
+  - TypeScript strict mode ativo em tsconfig.app.json.
+  - Path aliases (@app, @modules, etc.) validados no TS e Vite.
+O projeto encontra-se em estado estável e pronto para a transição para a FASE 2.
+
+DÍVIDA TÉCNICA / PENDÊNCIAS:
+- Instalação das bibliotecas obrigatórias (TanStack Query, React Hook Form, Zod) - programado para FASES 2 e 3.
+- Implementação do client HTTP central (api/) - previsto para FASE 2.
+
+COMANDO DE VALIDAÇÃO:
+npm run lint && npm run build
+SESSION_LOG_END
+
+SESSION_LOG_START | Versão: FASE-2.1 | Data: 06/02/2026
+ARQUIVOS CRIADOS/MODIFICADOS:
+- package.json
+- src/api/client.ts
+
+RESUMO TÉCNICO:
+Instalação da biblioteca Axios como client HTTP principal.
+Criação da instância central 'apiClient' em /src/api/client.ts.
+Configuração de baseURL utilizando variável de ambiente (import.meta.env.VITE_API_URL || 'http://localhost:8080').
+Configuração de timeout global (30s).
+Exportação de utilitário createAbortController para gerenciamento de cancelamento de requisições.
+Validação de tipos e build concluídos com sucesso.
+
+DÍVIDA TÉCNICA / PENDÊNCIAS:
+- Implementação de interceptors (Auth, 401, 403, 429).
+- Lógica de refresh token.
+- Mapeamento central de erros HTTP.
+
+COMANDO DE VALIDAÇÃO:
+npx tsc -p tsconfig.app.json --noEmit
+SESSION_LOG_END
