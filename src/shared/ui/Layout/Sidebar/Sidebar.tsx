@@ -24,6 +24,18 @@ export const Sidebar: React.FC = () => {
         >
           BOM
         </NavLink>
+        <NavLink 
+          to="/customers" 
+          className={({ isActive }) => isActive ? `${styles.navLink} ${styles.active}` : styles.navLink}
+        >
+          Clientes
+        </NavLink>
+        <NavLink 
+          to="/leads" 
+          className={({ isActive }) => isActive ? `${styles.navLink} ${styles.active}` : styles.navLink}
+        >
+          Leads
+        </NavLink>
         {/* PENDENTE: Outros links de domínios */}
       </nav>
     </aside>

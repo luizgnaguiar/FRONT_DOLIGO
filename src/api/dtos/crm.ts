@@ -6,12 +6,21 @@
 
 import type { ID } from './common';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface CustomerDTO extends ID {
-  // PENDENTE: Definir campos (name, email, phone, address, taxId)
+  name: string;
+  email: string;
+  phone?: string;
+  taxId?: string; // CNPJ/CPF
+  type: 'COMPANY' | 'INDIVIDUAL';
+  status: 'ACTIVE' | 'INACTIVE';
+  createdAt: string;
 }
 
 export interface LeadDTO extends ID {
-  // PENDENTE: Definir campos (name, source, status, notes)
+  name: string;
+  email: string;
+  company?: string;
+  source?: string;
   status: 'NEW' | 'CONTACTED' | 'QUALIFIED' | 'LOST';
+  createdAt: string;
 }

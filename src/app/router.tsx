@@ -3,6 +3,7 @@ import { LoginPage } from '@modules/auth';
 import { InvoiceListPage, InvoiceCreatePage, InvoiceEditPage } from '@modules/invoice';
 import { StockListPage } from '@modules/stock';
 import { BomListPage, BomDetailPage } from '@modules/bom';
+import { CustomerListPage, LeadListPage } from '@modules/crm';
 import { AuthGuard } from './guards/AuthGuard';
 import { GuestGuard } from './guards/GuestGuard';
 import { AppShell } from './components/Shell/AppShell';
@@ -57,6 +58,14 @@ export const router = createBrowserRouter([
           {
             path: '/boms/:id',
             element: <BomDetailPage />,
+          },
+          {
+            path: '/customers',
+            element: <CustomerListPage />,
+          },
+          {
+            path: '/leads',
+            element: <LeadListPage />,
           },
         ],
       },
