@@ -11,10 +11,17 @@ interface AppLayoutProps {
 export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   return (
     <div className={styles.wrapper}>
+      <a href="#main-content" className="skip-to-content">
+        Pular para o conteúdo
+      </a>
       <Header />
       <div className={styles.body}>
         <Sidebar />
-        <MainContent>{children}</MainContent>
+        <MainContent>
+          <div id="main-content" tabIndex={-1} style={{ outline: 'none' }}>
+            {children}
+          </div>
+        </MainContent>
       </div>
     </div>
   );
