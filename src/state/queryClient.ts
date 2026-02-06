@@ -15,16 +15,21 @@ export const queryClient = new QueryClient({
       staleTime: 1000 * 60 * 5,
       // Cache is kept for 30 minutes
       gcTime: 1000 * 60 * 30,
-      // Retry policy for errors (429 and 5xx are handled by Axios interceptors in future phases,
-      // but Query provides a safety layer).
+      // Retry policy for errors (429 and 5xx)
       retry: (failureCount, error: any) => {
-        // Do not retry for 4xx errors except 429
+        if (failureCount >= 3) return false;
+
         const status = error?.response?.status;
-        if (status && status >= 400 && status < 500 && status !== 429) {
-          return false;
+        
+        // Retry for Rate Limit (429) or Server Errors (5xx)
+        if (status === 429 || (status >= 500 && status <= 599)) {
+          return true;
         }
-        return failureCount < 3;
+
+        return false;
       },
+      // Progressive backoff: 1s, 2s, 4s... capped at 10s
+      retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 10000),
       refetchOnWindowFocus: false, // Prevents excessive calls in ERP context
     },
     mutations: {

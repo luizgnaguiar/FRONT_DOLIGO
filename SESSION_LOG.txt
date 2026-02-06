@@ -304,3 +304,22 @@ DÍVIDA TÉCNICA / PENDÊNCIAS:
 COMANDO DE VALIDAÇÃO:
 npm run build
 SESSION_LOG_END
+
+SESSION_LOG_START | Versão: FASE-3.2 | Data: 06/02/2026
+ARQUIVOS CRIADOS/MODIFICADOS:
+- src/state/queryClient.ts
+
+RESUMO TÉCNICO:
+Integração das políticas de retry do TanStack Query com o status do client HTTP.
+Configuração de retry condicional para erros 429 (Rate Limit) e 5xx (Server Errors).
+Implementação de backoff exponencial progressivo (início 1s, máximo 10s, limite de 3 tentativas).
+Garantia de compatibilidade com AbortController para cancelamento de requisições via signal do TanStack Query.
+Validação de tipos e build concluídos com sucesso.
+
+DÍVIDA TÉCNICA / PENDÊNCIAS:
+- Implementação de polling condicional para status de PDF (fases futuras).
+- Sincronização de retryDelay com políticas específicas do backend se necessário.
+
+COMANDO DE VALIDAÇÃO:
+npm run build
+SESSION_LOG_END
