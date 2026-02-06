@@ -2,6 +2,7 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { LoginPage } from '@modules/auth';
 import { InvoiceListPage, InvoiceCreatePage, InvoiceEditPage } from '@modules/invoice';
 import { StockListPage } from '@modules/stock';
+import { BomListPage, BomDetailPage } from '@modules/bom';
 import { AuthGuard } from './guards/AuthGuard';
 import { GuestGuard } from './guards/GuestGuard';
 import { AppShell } from './components/Shell/AppShell';
@@ -48,6 +49,14 @@ export const router = createBrowserRouter([
           {
             path: '/stock',
             element: <StockListPage />,
+          },
+          {
+            path: '/boms',
+            element: <BomListPage />,
+          },
+          {
+            path: '/boms/:id',
+            element: <BomDetailPage />,
           },
         ],
       },

@@ -18,6 +18,12 @@ export const Sidebar: React.FC = () => {
         >
           Estoque
         </NavLink>
+        <NavLink 
+          to="/boms" 
+          className={({ isActive }) => isActive ? `${styles.navLink} ${styles.active}` : styles.navLink}
+        >
+          BOM
+        </NavLink>
         {/* PENDENTE: Outros links de domínios */}
       </nav>
     </aside>

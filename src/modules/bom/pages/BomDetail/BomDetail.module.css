@@ -1,0 +1,77 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+  padding: var(--spacing-6);
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titleArea {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.content {
+  flex: 1;
+}
+
+.card {
+  background-color: #ffffff;
+  border: 1px solid var(--color-neutral-200);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  box-shadow: var(--shadow-sm);
+}
+
+.bomInfo {
+  display: flex;
+  gap: var(--spacing-12);
+  padding-bottom: var(--spacing-6);
+  border-bottom: 1px solid var(--color-neutral-100);
+  margin-bottom: var(--spacing-6);
+}
+
+.infoGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.treeSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.sectionTitle {
+  margin-bottom: var(--spacing-2);
+}
+
+.treeWrapper {
+  background-color: var(--color-neutral-50);
+  padding: var(--spacing-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-neutral-200);
+}
+
+.errorContainer {
+  padding: var(--spacing-12);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.skeletonWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}

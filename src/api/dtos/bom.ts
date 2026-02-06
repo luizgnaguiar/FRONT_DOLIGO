@@ -6,12 +6,20 @@
 
 import type { ID } from './common';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-export interface BomDTO extends ID {
-  // PENDENTE: Definir campos (product, components, quantity, version)
+export interface BomComponentDTO {
+  id: string;
+  sku: string;
+  name: string;
+  quantity: number;
+  unit: string;
+  components?: BomComponentDTO[]; // Recursive for tree visualization
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-export interface BomComponentDTO {
-  // PENDENTE: Definir campos (item, quantity, unit)
+export interface BomDTO extends ID {
+  productSku: string;
+  productName: string;
+  version: string;
+  description?: string;
+  components: BomComponentDTO[];
+  createdAt: string;
 }

@@ -1,0 +1,58 @@
+.treeList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.treeNode {
+  margin: var(--spacing-2) 0;
+}
+
+.nodeContent {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border: 1px solid transparent;
+}
+
+.nodeContent:hover {
+  background-color: var(--color-neutral-50);
+  border-color: var(--color-neutral-200);
+}
+
+.toggle {
+  display: inline-block;
+  font-size: 10px;
+  transition: transform 0.2s;
+  width: 12px;
+  color: var(--color-neutral-500);
+}
+
+.expanded {
+  transform: rotate(90deg);
+}
+
+.dot {
+  width: 12px;
+  text-align: center;
+  color: var(--color-neutral-300);
+}
+
+.sku {
+  color: var(--color-primary);
+  min-width: 100px;
+}
+
+.name {
+  flex: 1;
+}
+
+.quantity {
+  background-color: var(--color-neutral-100);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}

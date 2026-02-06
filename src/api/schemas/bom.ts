@@ -6,10 +6,23 @@ import { z } from 'zod';
  * PENDENTE: Sincronizar campos com o backend.
  */
 
+export const BomComponentSchema: z.ZodType<any> = z.lazy(() => 
+  z.object({
+    id: z.string(),
+    sku: z.string(),
+    name: z.string(),
+    quantity: z.number(),
+    unit: z.string(),
+    components: z.array(BomComponentSchema).optional(),
+  })
+);
+
 export const BomSchema = z.object({
   id: z.string().uuid(),
-});
-
-export const BomComponentSchema = z.object({
-  // PENDENTE
+  productSku: z.string(),
+  productName: z.string(),
+  version: z.string(),
+  description: z.string().optional(),
+  components: z.array(BomComponentSchema),
+  createdAt: z.string().datetime(),
 });
