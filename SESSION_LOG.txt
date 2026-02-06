@@ -85,7 +85,7 @@ Verificação e garantia da existência dos diretórios obrigatórios definidos 
 - /state (queries, cache, estado global mínimo)
 - /shared (UI reutilizável, hooks, utils, validators)
 - /styles (tema, tokens, estilos globais)
-- /assets (ícones, logos, arquivos estáticos)
+- /assets ( ícones, logos, arquivos estáticos)
 A estrutura reflete fielmente a hierarquia de precedência e os princípios de isolamento arquitetural (modules representam domínios, shared não conhece modules, etc.).
 
 DÍVIDA TÉCNICA / PENDÊNCIAS:
@@ -95,4 +95,26 @@ DÍVIDA TÉCNICA / PENDÊNCIAS:
 
 COMANDO DE VALIDAÇÃO:
 ls -F src
+SESSION_LOG_END
+
+SESSION_LOG_START | Versão: FASE-1.4 | Data: 06/02/2026
+ARQUIVOS CRIADOS/MODIFICADOS:
+- tsconfig.app.json
+- vite.config.ts
+- src/app/App.tsx
+- src/app/main.tsx
+
+RESUMO TÉCNICO:
+Configuração de aliases de importação para refletir a arquitetura do projeto e simplificar referências entre módulos.
+- Adição de baseUrl e paths em tsconfig.app.json.
+- Configuração de resolve.alias em vite.config.ts utilizando caminhos absolutos para compatibilidade com ESM.
+- Atualização dos arquivos src/app/App.tsx e src/app/main.tsx para utilizar os novos aliases (@app, @assets, @styles).
+- Aliases configurados: @src, @app, @modules, @api, @state, @shared, @styles, @assets.
+- Verificação de sucesso via 'npm run build', confirmando que o compilador TS e o bundler Vite resolvem os caminhos corretamente.
+
+DÍVIDA TÉCNICA / PENDÊNCIAS:
+- Nenhuma identificada nesta fase.
+
+COMANDO DE VALIDAÇÃO:
+npm run build
 SESSION_LOG_END
