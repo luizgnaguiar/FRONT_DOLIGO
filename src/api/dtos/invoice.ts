@@ -7,8 +7,12 @@
 import type { ID } from './common';
 
 export interface InvoiceDTO extends ID {
-  // PENDENTE: Definir campos (number, date, customer, items, total, status)
-  status: 'DRAFT' | 'ISSUED' | 'PAID' | 'CANCELLED'; // Exemplo provisório
+  // PENDENTE: Sincronizar campos com o backend
+  invoiceNumber: string;
+  customerName: string;
+  issueDate: string;
+  totalAmount: number;
+  status: 'DRAFT' | 'ISSUED' | 'PAID' | 'CANCELLED';
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type

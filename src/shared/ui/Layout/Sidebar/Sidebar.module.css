@@ -23,6 +23,27 @@
   text-align: center;
 }
 
+.navLink {
+  padding: var(--spacing-2) var(--spacing-4);
+  color: var(--color-neutral-700);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  transition: all 0.2s;
+}
+
+.navLink:hover {
+  background-color: var(--color-neutral-200);
+  color: var(--color-primary-600);
+  text-decoration: none;
+}
+
+.navLink.active {
+  background-color: var(--color-primary-50);
+  color: var(--color-primary-600);
+}
+
 @media (max-width: 768px) {
   .sidebar {
     display: none; /* PENDENTE: Mobile menu implementation */

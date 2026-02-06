@@ -1,0 +1,77 @@
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--color-neutral-200);
+  border-radius: var(--radius-md);
+  background: #ffffff;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+  text-align: left;
+}
+
+.thead {
+  background-color: var(--color-neutral-100);
+  border-bottom: 1px solid var(--color-neutral-200);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.th {
+  padding: var(--spacing-3) var(--spacing-4);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-700);
+  white-space: nowrap;
+}
+
+.tbody {
+  position: relative;
+}
+
+.tr {
+  border-bottom: 1px solid var(--color-neutral-100);
+  transition: background-color 0.2s;
+}
+
+.tr:hover {
+  background-color: var(--color-neutral-50);
+}
+
+.td {
+  padding: var(--spacing-3) var(--spacing-4);
+  color: var(--color-neutral-900);
+}
+
+.loading {
+  padding: var(--spacing-12);
+  text-align: center;
+}
+
+.empty {
+  padding: var(--spacing-8);
+  text-align: center;
+  color: var(--color-neutral-500);
+}
+
+/* Virtual Table specific */
+.viewport {
+  overflow: auto;
+  position: relative;
+  will-change: transform;
+}
+
+.spacer {
+  position: relative;
+  width: 100%;
+}
+
+.virtualTr {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
