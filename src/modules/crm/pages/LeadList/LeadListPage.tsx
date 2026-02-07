@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useLeads } from '../../hooks/useLeads';
 import { VirtualTable, type Column, Text, Input, TableSkeleton, ErrorState } from '@shared/ui';
 import type { LeadDTO } from '@api/dtos/crm';
@@ -16,7 +16,7 @@ export const LeadListPage: React.FC = () => {
     search: search || undefined,
   });
 
-  const columns: Column<LeadDTO>[] = [
+  const columns: Column<LeadDTO>[] = useMemo(() => [
     {
       header: 'Nome',
       accessor: 'name',
@@ -43,7 +43,7 @@ export const LeadListPage: React.FC = () => {
       accessor: 'source',
       width: '120px',
     },
-  ];
+  ], []);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);

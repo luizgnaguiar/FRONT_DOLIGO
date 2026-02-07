@@ -1,4 +1,4 @@
-import React, { useState, lazy, Suspense } from 'react';
+import React, { useState, lazy, Suspense, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useInvoices } from '../../hooks/useInvoices';
 import { type Column, Text, Button, Can, Spinner, TableSkeleton, ErrorState } from '@shared/ui';
@@ -12,10 +12,11 @@ const VirtualTable = lazy(() => import('@shared/ui/Table/VirtualTable').then(m =
 /**
  * InvoiceListPage.
  * 
- * According to Phase 6.2 & 6.7 & 8.2:
+ * According to Phase 6.2 & 6.7 & 8.2 & 8.6:
  * - Table with mandatory virtualization.
  * - RBAC integration for actions.
  * - Lazy loading of the heavy VirtualTable component.
+ * - Memoized columns for performance.
  */
 export const InvoiceListPage: React.FC = () => {
   const [page, setPage] = useState(1);
@@ -27,7 +28,7 @@ export const InvoiceListPage: React.FC = () => {
     limit,
   });
 
-  const columns: Column<InvoiceDTO>[] = [
+  const columns: Column<InvoiceDTO>[] = useMemo(() => [
     {
       header: 'Número',
       accessor: 'invoiceNumber',
@@ -75,7 +76,7 @@ export const InvoiceListPage: React.FC = () => {
       ),
       width: '100px',
     },
-  ];
+  ], [navigate]);
 
   if (error) {
     return (

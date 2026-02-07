@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useCustomers } from '../../hooks/useCustomers';
 import { VirtualTable, type Column, Text, Input, TableSkeleton, ErrorState } from '@shared/ui';
 import type { CustomerDTO } from '@api/dtos/crm';
@@ -16,7 +16,7 @@ export const CustomerListPage: React.FC = () => {
     search: search || undefined,
   });
 
-  const columns: Column<CustomerDTO>[] = [
+  const columns: Column<CustomerDTO>[] = useMemo(() => [
     {
       header: 'Nome',
       accessor: 'name',
@@ -39,7 +39,7 @@ export const CustomerListPage: React.FC = () => {
       ),
       width: '100px',
     },
-  ];
+  ], []);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useBoms } from '../../hooks/useBoms';
 import { VirtualTable, type Column, Text, Button, TableSkeleton, ErrorState } from '@shared/ui';
@@ -16,7 +16,7 @@ export const BomListPage: React.FC = () => {
     limit,
   });
 
-  const columns: Column<BomDTO>[] = [
+  const columns: Column<BomDTO>[] = useMemo(() => [
     {
       header: 'Produto SKU',
       accessor: 'productSku',
@@ -49,7 +49,7 @@ export const BomListPage: React.FC = () => {
       ),
       width: '150px',
     },
-  ];
+  ], [navigate]);
 
   if (error) {
     return (

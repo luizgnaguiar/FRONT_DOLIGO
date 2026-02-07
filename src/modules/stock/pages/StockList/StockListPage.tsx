@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useStockItems } from '../../hooks/useStockItems';
 import { VirtualTable, type Column, Text, Input, TableSkeleton, ErrorState } from '@shared/ui';
 import type { StockItemDTO } from '@api/dtos/stock';
@@ -8,13 +8,10 @@ import styles from './StockList.module.css';
 /**
  * StockListPage.
  * 
- * According to Phase 6.4:
+ * According to Phase 6.4 & 8.6:
  * - Table with mandatory virtualization.
- * - Server-driven pagination.
- * - Simple filters (server-side).
- * - Loading states (Skeleton).
+ * - Memoized columns for performance.
  */
-
 export const StockListPage: React.FC = () => {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
@@ -31,7 +28,7 @@ export const StockListPage: React.FC = () => {
     setPage(1); // Reset to first page on search
   };
 
-  const columns: Column<StockItemDTO>[] = [
+  const columns: Column<StockItemDTO>[] = useMemo(() => [
     {
       header: 'SKU',
       accessor: 'sku',
@@ -60,7 +57,7 @@ export const StockListPage: React.FC = () => {
       accessor: (item) => new Date(item.updatedAt).toLocaleDateString(),
       width: '150px',
     },
-  ];
+  ], []);
 
   if (error) {
     return (
