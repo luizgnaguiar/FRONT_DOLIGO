@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useBoms } from '../../hooks/useBoms';
-import { VirtualTable, type Column, Text, Button, TableSkeleton } from '@shared/ui';
+import { VirtualTable, type Column, Text, Button, TableSkeleton, ErrorState } from '@shared/ui';
 import type { BomDTO } from '@api/dtos/bom';
 import { mapErrorCodeToMessage } from '@api/errors';
 import styles from './BomList.module.css';
@@ -53,10 +53,10 @@ export const BomListPage: React.FC = () => {
 
   if (error) {
     return (
-      <div className={styles.errorContainer}>
-        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-        <Text color="error">{mapErrorCodeToMessage((error as any)?.code)}</Text>
-      </div>
+      <ErrorState
+        /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+        message={mapErrorCodeToMessage((error as any)?.code)}
+      />
     );
   }
 

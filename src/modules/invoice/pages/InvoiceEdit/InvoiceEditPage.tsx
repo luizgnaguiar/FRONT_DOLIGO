@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Text, Button, FormSkeleton } from '@shared/ui';
+import { Text, FormSkeleton, ErrorState } from '@shared/ui';
 import { useInvoice } from '../../hooks/useInvoice';
 import { useUpdateInvoice } from '../../hooks/useUpdateInvoice';
 import { InvoiceForm } from '../../components/InvoiceForm';
@@ -19,15 +19,10 @@ export const InvoiceEditPage: React.FC = () => {
 
   if (loadError || !invoice) {
     return (
-       <div style={{ padding: 'var(--spacing-6)', display: 'flex', flexDirection: 'column', gap: 'var(--spacing-4)' }}>
-        <Text color="error">
-          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-          {loadError ? mapErrorCodeToMessage((loadError as any)?.code) : 'Invoice não encontrada.'}
-        </Text>
-        <div style={{ width: 'fit-content' }}>
-            <Button variant="outline" onClick={() => navigate('/invoices')}>Voltar</Button>
-        </div>
-      </div>
+      <ErrorState
+        /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+        message={loadError ? mapErrorCodeToMessage((loadError as any)?.code) : 'Invoice não encontrada.'}
+      />
     );
   }
 

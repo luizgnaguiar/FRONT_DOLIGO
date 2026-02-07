@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useStockItems } from '../../hooks/useStockItems';
-import { VirtualTable, type Column, Text, Input, TableSkeleton } from '@shared/ui';
+import { VirtualTable, type Column, Text, Input, TableSkeleton, ErrorState } from '@shared/ui';
 import type { StockItemDTO } from '@api/dtos/stock';
 import { mapErrorCodeToMessage } from '@api/errors';
 import styles from './StockList.module.css';
@@ -64,10 +64,10 @@ export const StockListPage: React.FC = () => {
 
   if (error) {
     return (
-      <div className={styles.errorContainer}>
-        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-        <Text color="error">{mapErrorCodeToMessage((error as any)?.code)}</Text>
-      </div>
+      <ErrorState
+        /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+        message={mapErrorCodeToMessage((error as any)?.code)}
+      />
     );
   }
 

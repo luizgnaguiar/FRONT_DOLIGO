@@ -4,6 +4,7 @@ export * from './Input';
 export * from './Text';
 export * from './Spinner';
 export * from './Skeleton';
+export * from './ErrorState';
 export * from './Icon';
 export * from './Can';
 export * from './Layout';

@@ -1,7 +1,7 @@
 import React, { useState, lazy, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useInvoices } from '../../hooks/useInvoices';
-import { type Column, Text, Button, Can, Spinner, TableSkeleton } from '@shared/ui';
+import { type Column, Text, Button, Can, Spinner, TableSkeleton, ErrorState } from '@shared/ui';
 import type { InvoiceDTO } from '@api/dtos/invoice';
 import { mapErrorCodeToMessage } from '@api/errors';
 import styles from './InvoiceList.module.css';
@@ -79,10 +79,10 @@ export const InvoiceListPage: React.FC = () => {
 
   if (error) {
     return (
-      <div className={styles.errorContainer}>
-        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-        <Text color="error">{mapErrorCodeToMessage((error as any)?.code)}</Text>
-      </div>
+      <ErrorState
+        /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+        message={mapErrorCodeToMessage((error as any)?.code)}
+      />
     );
   }
 

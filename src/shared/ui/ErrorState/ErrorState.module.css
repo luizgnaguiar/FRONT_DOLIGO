@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-12);
+  text-align: center;
+  gap: var(--spacing-4);
+  height: 100%;
+}
+
+.icon {
+  width: 64px;
+  height: 64px;
+  background-color: var(--color-error);
+  color: #ffffff;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  margin-bottom: var(--spacing-4);
+}
+
+.title {
+  margin-bottom: var(--spacing-1);
+}
+
+.message {
+  max-width: 400px;
+}
+
+.button {
+  margin-top: var(--spacing-4);
+}

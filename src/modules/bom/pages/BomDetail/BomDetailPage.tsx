@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useBom } from '../../hooks/useBoms';
-import { Text, Button, Spinner, FormSkeleton } from '@shared/ui';
+import { Text, Button, Spinner, FormSkeleton, ErrorState } from '@shared/ui';
 import { mapErrorCodeToMessage } from '@api/errors';
 import styles from './BomDetail.module.css';
 
@@ -21,13 +21,10 @@ export const BomDetailPage: React.FC = () => {
 
   if (error) {
     return (
-      <div className={styles.errorContainer}>
-        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-        <Text color="error">{mapErrorCodeToMessage((error as any)?.code)}</Text>
-        <Button onClick={() => navigate('/boms')} className={styles.backButton}>
-          Voltar para Lista
-        </Button>
-      </div>
+      <ErrorState
+        /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+        message={mapErrorCodeToMessage((error as any)?.code)}
+      />
     );
   }
 
