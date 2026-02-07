@@ -19,21 +19,6 @@
   gap: var(--spacing-4);
 }
 
-.skeletonWrapper {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-4);
-}
-
-.skeletonRow {
-  margin-bottom: var(--spacing-2);
-}
-
-.errorContainer {
-  padding: var(--spacing-12);
-  text-align: center;
-}
-
 .status {
   padding: var(--spacing-1) var(--spacing-2);
   border-radius: var(--radius-sm);
