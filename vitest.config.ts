@@ -18,6 +18,7 @@ export default defineConfig({
       '@shared': path.resolve(__dirname, './src/shared'),
       '@styles': path.resolve(__dirname, './src/styles'),
       '@assets': path.resolve(__dirname, './src/assets'),
+      '@test': path.resolve(__dirname, './src/test'),
     },
   },
   resolve: {
@@ -29,6 +30,7 @@ export default defineConfig({
       '@shared': path.resolve(__dirname, './src/shared'),
       '@styles': path.resolve(__dirname, './src/styles'),
       '@assets': path.resolve(__dirname, './src/assets'),
+      '@test': path.resolve(__dirname, './src/test'),
     },
   },
 });

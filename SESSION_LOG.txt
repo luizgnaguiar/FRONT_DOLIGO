@@ -1303,3 +1303,24 @@ DÍVIDA TÉCNICA / PENDÊNCIAS:
 COMANDO DE VALIDAÇÃO:
 npm run test:run
 SESSION_LOG_END
+
+SESSION_LOG_START | Versão: FASE-9.3 | Data: 06/02/2026
+ARQUIVOS CRIADOS/MODIFICADOS:
+- src/shared/ui/Button/Button.test.tsx
+- src/modules/auth/pages/Login/LoginPage.test.tsx
+- src/app/guards/AuthGuard.test.tsx
+- src/test/utils.tsx (ajuste de imports)
+
+RESUMO TÉCNICO:
+Implementação de testes de integração para componentes críticos.
+- Testes do AuthGuard: Validação de redirecionamento (Navigate) e renderização condicional (Outlet) com mocks de estado global.
+- Testes da LoginPage: Validação de renderização de formulário, feedback de erro e estado de loading, utilizando mocks do hook useLogin.
+- Testes do componente Button: Validação de comportamento de click, estado disabled e loading.
+- Ajustes na configuração de testes para suportar user-event e mocks de roteamento.
+
+DÍVIDA TÉCNICA / PENDÊNCIAS:
+- Expandir cobertura para outros componentes compartilhados (Input, Modal, etc).
+
+COMANDO DE VALIDAÇÃO:
+npm run test:run
+SESSION_LOG_END
