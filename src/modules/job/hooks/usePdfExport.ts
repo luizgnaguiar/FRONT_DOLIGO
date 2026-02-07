@@ -1,8 +1,7 @@
 import { useRunJob } from './useRunJob';
 import type { JobDTO } from '@api/dtos/job';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const usePdfExport = (_type: string = 'EXPORT_PDF') => {
+export const usePdfExport = (_type = 'EXPORT_PDF') => {
   return useRunJob({
     onCompleted: (job: JobDTO) => {
       // Assuming result contains a url or we need to fetch the file
