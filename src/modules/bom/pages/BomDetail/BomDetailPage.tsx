@@ -9,11 +9,12 @@ import styles from './BomDetail.module.css';
 export const BomDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { data, isLoading, error } = useBom(id!);
+  const { data, isLoading, error } = useBom(id || '');
 
   if (error) {
     return (
       <div className={styles.errorContainer}>
+        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
         <Text color="error">{mapErrorCodeToMessage((error as any)?.code)}</Text>
         <Button onClick={() => navigate('/boms')} className={styles.backButton}>
           Voltar para Lista

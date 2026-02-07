@@ -38,8 +38,8 @@ const BomTreeNode: React.FC<{ component: BomComponentDTO; level: number }> = ({ 
           {component.quantity} {component.unit}
         </Text>
       </div>
-      {hasChildren && isExpanded && (
-        <BomTree components={component.components!} level={level + 1} />
+      {hasChildren && isExpanded && component.components && (
+        <BomTree components={component.components} level={level + 1} />
       )}
     </li>
   );

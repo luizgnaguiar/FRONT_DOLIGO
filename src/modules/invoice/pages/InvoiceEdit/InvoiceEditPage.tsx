@@ -10,7 +10,7 @@ import { mapErrorCodeToMessage } from '@api/errors';
 export const InvoiceEditPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { data: invoice, isLoading, error: loadError } = useInvoice(id!);
+  const { data: invoice, isLoading, error: loadError } = useInvoice(id || '');
   const { mutate, isPending, error: updateError } = useUpdateInvoice();
 
   if (isLoading) {
@@ -26,6 +26,7 @@ export const InvoiceEditPage: React.FC = () => {
     return (
        <div style={{ padding: 'var(--spacing-6)', display: 'flex', flexDirection: 'column', gap: 'var(--spacing-4)' }}>
         <Text color="error">
+          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
           {loadError ? mapErrorCodeToMessage((loadError as any)?.code) : 'Invoice não encontrada.'}
         </Text>
         <div style={{ width: 'fit-content' }}>
@@ -60,6 +61,7 @@ export const InvoiceEditPage: React.FC = () => {
 
       {updateError && (
         <div style={{ marginBottom: 'var(--spacing-4)', padding: 'var(--spacing-4)', backgroundColor: '#fee2e2', borderRadius: 'var(--radius-md)' }}>
+           {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
            <Text color="error">{mapErrorCodeToMessage((updateError as any)?.code)}</Text>
         </div>
       )}

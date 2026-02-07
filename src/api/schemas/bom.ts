@@ -6,6 +6,7 @@ import { z } from 'zod';
  * PENDENTE: Sincronizar campos com o backend.
  */
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const BomComponentSchema: z.ZodType<any> = z.lazy(() => 
   z.object({
     id: z.string(),

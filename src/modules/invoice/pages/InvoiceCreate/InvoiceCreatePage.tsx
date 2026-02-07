@@ -27,6 +27,7 @@ export const InvoiceCreatePage: React.FC = () => {
 
       {error && (
         <div style={{ marginBottom: 'var(--spacing-4)', padding: 'var(--spacing-4)', backgroundColor: '#fee2e2', borderRadius: 'var(--radius-md)' }}>
+           {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
            <Text color="error">{mapErrorCodeToMessage((error as any)?.code)}</Text>
         </div>
       )}

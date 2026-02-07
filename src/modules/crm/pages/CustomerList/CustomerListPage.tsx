@@ -49,6 +49,7 @@ export const CustomerListPage: React.FC = () => {
   if (error) {
     return (
       <div className={styles.errorContainer}>
+        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
         <Text color="error">{mapErrorCodeToMessage((error as any)?.code)}</Text>
       </div>
     );
