@@ -1425,3 +1425,24 @@ DÍVIDA TÉCNICA / PENDÊNCIAS:
 COMANDO DE VALIDAÇÃO:
 npm run build
 SESSION_LOG_END
+
+SESSION_LOG_START | Versão: FASE-10.3 | Data: 06/02/2026
+ARQUIVOS CRIADOS/MODIFICADOS:
+- src/config/env.ts
+- src/api/client.ts
+- .env.example
+
+RESUMO TÉCNICO:
+Preparação e centralização das variáveis de ambiente.
+- Criação do módulo src/config/env.ts para gerenciar o acesso a import.meta.env de forma centralizada e resiliente.
+- Implementação de helper getEnv com validação de obrigatoriedade.
+- Refatoração do apiClient para utilizar o endpoint configurado no objeto config.
+- Criação do arquivo .env.example para documentação das variáveis necessárias (VITE_API_URL).
+- Verificação de sucesso via build de produção.
+
+DÍVIDA TÉCNICA / PENDÊNCIAS:
+- Nenhuma identificada nesta fase.
+
+COMANDO DE VALIDAÇÃO:
+npm run build
+SESSION_LOG_END

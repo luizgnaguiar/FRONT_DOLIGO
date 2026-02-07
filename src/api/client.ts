@@ -2,12 +2,13 @@ import axios from 'axios';
 import { useSessionStore } from '@state/sessionStore';
 import { queryClient } from '@state/queryClient';
 import { mapErrorCodeToMessage, type ApiErrorResponse } from './errors';
+import { config } from '../config/env';
 
 /**
  * Central HTTP client instance for the Doligo Frontend.
  */
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+const API_BASE_URL = config.apiUrl;
 const DEFAULT_TIMEOUT = 30000; // 30 seconds
 
 export const apiClient = axios.create({
