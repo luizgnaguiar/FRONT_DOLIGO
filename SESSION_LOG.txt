@@ -1285,3 +1285,21 @@ DÍVIDA TÉCNICA / PENDÊNCIAS:
 COMANDO DE VALIDAÇÃO:
 npm run test:run
 SESSION_LOG_END
+
+SESSION_LOG_START | Versão: FASE-9.2 | Data: 06/02/2026
+ARQUIVOS CRIADOS/MODIFICADOS:
+- src/api/errors.test.ts
+- src/api/schemas/invoice.test.ts
+
+RESUMO TÉCNICO:
+Implementação de testes unitários para utilitários e validações.
+- Teste de unidade para mapErrorCodeToMessage (src/api/errors.ts), validando o mapeamento correto de códigos de erro e fallback padrão.
+- Teste de unidade para CreateInvoiceSchema (src/api/schemas/invoice.ts), validando regras de negócio e validação Zod (sucesso e falha).
+- Execução bem-sucedida dos testes via Vitest.
+
+DÍVIDA TÉCNICA / PENDÊNCIAS:
+- Expandir cobertura de testes para outros schemas e utilitários.
+
+COMANDO DE VALIDAÇÃO:
+npm run test:run
+SESSION_LOG_END
