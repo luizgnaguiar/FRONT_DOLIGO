@@ -4,3 +4,4 @@ export * from './invoice';
 export * from './stock';
 export * from './bom';
 export * from './crm';
+export * from './job';
