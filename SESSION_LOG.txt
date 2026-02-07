@@ -1407,3 +1407,21 @@ DÍVIDA TÉCNICA / PENDÊNCIAS:
 COMANDO DE VALIDAÇÃO:
 npm run build
 SESSION_LOG_END
+
+SESSION_LOG_START | Versão: FASE-10.2 | Data: 06/02/2026
+ARQUIVOS CRIADOS/MODIFICADOS:
+- src/modules/auth/hooks/useLogout.ts
+
+RESUMO TÉCNICO:
+Revisão de segurança e refinamento do fluxo de logout.
+- Validação do armazenamento de JWT apenas em memória (SessionStore), garantindo proteção contra XSS persistente.
+- Confirmação de limpeza dupla (Store + Query Cache) tanto no logout manual quanto no automático (401).
+- Implementação de redirecionamento explícito para /login no useLogout para garantir fluidez na UX.
+- Verificação de interceptors para tratamento de Rate Limit (429) e erros de servidor (5xx) integrados ao TanStack Query.
+
+DÍVIDA TÉCNICA / PENDÊNCIAS:
+- Nenhuma identificada nesta fase.
+
+COMANDO DE VALIDAÇÃO:
+npm run build
+SESSION_LOG_END
