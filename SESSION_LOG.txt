@@ -1324,3 +1324,22 @@ DÍVIDA TÉCNICA / PENDÊNCIAS:
 COMANDO DE VALIDAÇÃO:
 npm run test:run
 SESSION_LOG_END
+
+SESSION_LOG_START | Versão: FASE-9.4 | Data: 06/02/2026
+ARQUIVOS CRIADOS/MODIFICADOS:
+- src/test/integration/auth-flow.test.tsx
+
+RESUMO TÉCNICO:
+Implementação de testes de integração para o fluxo completo de autenticação.
+- Criação de auth-flow.test.tsx validando:
+  - Redirecionamento automático para /login quando não autenticado.
+  - Fluxo de login com sucesso (input, submit, mock de API, redirecionamento para Dashboard).
+  - Fluxo de logout (clique no botão, limpeza de sessão, retorno para login).
+- Mock do apiClient e integração com RouterProvider e QueryClient reais no contexto de teste.
+
+DÍVIDA TÉCNICA / PENDÊNCIAS:
+- Testes de integração para fluxos de negócio (Invoice, Stock).
+
+COMANDO DE VALIDAÇÃO:
+npm run test:run
+SESSION_LOG_END
