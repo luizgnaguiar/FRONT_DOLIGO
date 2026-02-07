@@ -16,7 +16,7 @@ export const useJob = (id: string, options: { interval?: number; enabled?: boole
 
   return useQuery({
     queryKey: JOB_QUERY_KEYS.detail(id),
-    queryFn: () => jobService.getById(id),
+    queryFn: ({ signal }) => jobService.getById(id, signal),
     enabled: !!id && enabled && isAuthenticated,
     refetchInterval: (query) => {
       const data = query.state.data as JobDTO | undefined;

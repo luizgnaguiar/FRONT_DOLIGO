@@ -13,8 +13,8 @@ export const jobService = {
   /**
    * Get job status by ID.
    */
-  getById: async (id: string): Promise<JobDTO> => {
-    const response = await apiClient.get<JobDTO>(`/jobs/${id}`);
+  getById: async (id: string, signal?: AbortSignal): Promise<JobDTO> => {
+    const response = await apiClient.get<JobDTO>(`/jobs/${id}`, { signal });
     return response.data;
   },
 
