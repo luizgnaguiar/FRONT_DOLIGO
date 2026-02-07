@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLeads } from '../../hooks/useLeads';
-import { VirtualTable, type Column, Text, Skeleton, Input } from '@shared/ui';
+import { VirtualTable, type Column, Text, Input, TableSkeleton } from '@shared/ui';
 import type { LeadDTO } from '@api/dtos/crm';
 import { mapErrorCodeToMessage } from '@api/errors';
 import styles from './LeadList.module.css';
@@ -74,10 +74,7 @@ export const LeadListPage: React.FC = () => {
 
       <main className={styles.content}>
         {isLoading ? (
-          <div className={styles.skeletonWrapper}>
-            <Skeleton height="40px" width="100%" className={styles.skeletonRow} />
-            <Skeleton height="600px" width="100%" />
-          </div>
+          <TableSkeleton />
         ) : (
           <>
             <VirtualTable

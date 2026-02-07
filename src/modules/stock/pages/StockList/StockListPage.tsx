@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useStockItems } from '../../hooks/useStockItems';
-import { VirtualTable, type Column, Text, Skeleton, Input } from '@shared/ui';
+import { VirtualTable, type Column, Text, Input, TableSkeleton } from '@shared/ui';
 import type { StockItemDTO } from '@api/dtos/stock';
 import { mapErrorCodeToMessage } from '@api/errors';
 import styles from './StockList.module.css';
@@ -86,10 +86,7 @@ export const StockListPage: React.FC = () => {
 
       <main className={styles.content}>
         {isLoading ? (
-          <div className={styles.skeletonWrapper}>
-            <Skeleton height="40px" width="100%" className={styles.skeletonRow} />
-            <Skeleton height="600px" width="100%" />
-          </div>
+          <TableSkeleton />
         ) : (
           <>
             <VirtualTable

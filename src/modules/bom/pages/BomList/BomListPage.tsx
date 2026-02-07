@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useBoms } from '../../hooks/useBoms';
-import { VirtualTable, type Column, Text, Skeleton, Button } from '@shared/ui';
+import { VirtualTable, type Column, Text, Button, TableSkeleton } from '@shared/ui';
 import type { BomDTO } from '@api/dtos/bom';
 import { mapErrorCodeToMessage } from '@api/errors';
 import styles from './BomList.module.css';
@@ -68,10 +68,7 @@ export const BomListPage: React.FC = () => {
 
       <main className={styles.content}>
         {isLoading ? (
-          <div className={styles.skeletonWrapper}>
-            <Skeleton height="40px" width="100%" className={styles.skeletonRow} />
-            <Skeleton height="600px" width="100%" />
-          </div>
+          <TableSkeleton />
         ) : (
           <>
             <VirtualTable

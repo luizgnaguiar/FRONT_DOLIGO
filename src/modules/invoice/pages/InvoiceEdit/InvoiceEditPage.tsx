@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Text, Skeleton, Button } from '@shared/ui';
+import { Text, Button, FormSkeleton } from '@shared/ui';
 import { useInvoice } from '../../hooks/useInvoice';
 import { useUpdateInvoice } from '../../hooks/useUpdateInvoice';
 import { InvoiceForm } from '../../components/InvoiceForm';
@@ -14,12 +14,7 @@ export const InvoiceEditPage: React.FC = () => {
   const { mutate, isPending, error: updateError } = useUpdateInvoice();
 
   if (isLoading) {
-    return (
-      <div style={{ padding: 'var(--spacing-6)' }}>
-         <Skeleton height="40px" width="200px" style={{ marginBottom: 'var(--spacing-6)' }} />
-         <Skeleton height="400px" width="100%" />
-      </div>
-    );
+    return <FormSkeleton />;
   }
 
   if (loadError || !invoice) {

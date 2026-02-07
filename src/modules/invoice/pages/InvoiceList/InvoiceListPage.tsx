@@ -1,7 +1,7 @@
 import React, { useState, lazy, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useInvoices } from '../../hooks/useInvoices';
-import { type Column, Text, Skeleton, Button, Can, Spinner } from '@shared/ui';
+import { type Column, Text, Button, Can, Spinner, TableSkeleton } from '@shared/ui';
 import type { InvoiceDTO } from '@api/dtos/invoice';
 import { mapErrorCodeToMessage } from '@api/errors';
 import styles from './InvoiceList.module.css';
@@ -99,10 +99,7 @@ export const InvoiceListPage: React.FC = () => {
 
       <main className={styles.content}>
         {isLoading ? (
-          <div className={styles.skeletonWrapper}>
-            <Skeleton height="40px" width="100%" className={styles.skeletonRow} />
-            <Skeleton height="600px" width="100%" />
-          </div>
+          <TableSkeleton />
         ) : (
           <>
             <Suspense fallback={<div style={{ height: '600px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}><Spinner /></div>}>

@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useBom } from '../../hooks/useBoms';
-import { Text, Skeleton, Button, Spinner } from '@shared/ui';
+import { Text, Button, Spinner, FormSkeleton } from '@shared/ui';
 import { mapErrorCodeToMessage } from '@api/errors';
 import styles from './BomDetail.module.css';
 
@@ -44,10 +44,7 @@ export const BomDetailPage: React.FC = () => {
 
       <main className={styles.content}>
         {isLoading ? (
-          <div className={styles.skeletonWrapper}>
-            <Skeleton height="40px" width="300px" />
-            <Skeleton height="400px" width="100%" />
-          </div>
+          <FormSkeleton />
         ) : data ? (
           <div className={styles.card}>
             <div className={styles.bomInfo}>

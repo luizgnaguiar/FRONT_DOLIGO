@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useCustomers } from '../../hooks/useCustomers';
-import { VirtualTable, type Column, Text, Skeleton, Input } from '@shared/ui';
+import { VirtualTable, type Column, Text, Input, TableSkeleton } from '@shared/ui';
 import type { CustomerDTO } from '@api/dtos/crm';
 import { mapErrorCodeToMessage } from '@api/errors';
 import styles from './CustomerList.module.css';
@@ -70,10 +70,7 @@ export const CustomerListPage: React.FC = () => {
 
       <main className={styles.content}>
         {isLoading ? (
-          <div className={styles.skeletonWrapper}>
-            <Skeleton height="40px" width="100%" className={styles.skeletonRow} />
-            <Skeleton height="600px" width="100%" />
-          </div>
+          <TableSkeleton />
         ) : (
           <>
             <VirtualTable
