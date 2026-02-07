@@ -1343,3 +1343,24 @@ DÍVIDA TÉCNICA / PENDÊNCIAS:
 COMANDO DE VALIDAÇÃO:
 npm run test:run
 SESSION_LOG_END
+
+SESSION_LOG_START | Versão: FASE-9.5 | Data: 06/02/2026
+ARQUIVOS CRIADOS/MODIFICADOS:
+- package.json
+- playwright.config.ts
+- e2e/login.spec.ts
+
+RESUMO TÉCNICO:
+Configuração da infraestrutura de testes End-to-End (E2E).
+- Instalação do Playwright Test.
+- Configuração do playwright.config.ts com webServer integrado (npm run dev).
+- Implementação do primeiro teste E2E (login.spec.ts) cobrindo o fluxo de sucesso e falha de autenticação com interceptação de rede (mock de API).
+- Scripts de automação adicionados ao package.json.
+
+DÍVIDA TÉCNICA / PENDÊNCIAS:
+- Implementar testes E2E para listagens de Invoice e Stock.
+- Configurar CI para execução automatizada dos testes E2E.
+
+COMANDO DE VALIDAÇÃO:
+npx playwright test --help
+SESSION_LOG_END
