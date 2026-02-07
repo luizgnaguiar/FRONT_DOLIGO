@@ -34,7 +34,8 @@
       "@state/*": ["src/state/*"],
       "@shared/*": ["src/shared/*"],
       "@styles/*": ["src/styles/*"],
-      "@assets/*": ["src/assets/*"]
+      "@assets/*": ["src/assets/*"],
+      "@test/*": ["src/test/*"]
     }
   },
   "include": ["src"]

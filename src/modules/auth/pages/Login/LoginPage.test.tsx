@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen, userEvent } from '@test/utils';
+import { render, screen } from '@test/utils';
 import { LoginPage } from './LoginPage';
 import * as useLoginHook from '../../hooks/useLogin';
 

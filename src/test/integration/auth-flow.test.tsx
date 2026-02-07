@@ -55,6 +55,7 @@ describe('Auth Flow Integration', () => {
   it('allows login and redirects to home', async () => {
     const user = userEvent.setup();
     // Setup API mock
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (apiClient.post as any).mockResolvedValueOnce({
       data: {
         token: 'fake-token',
@@ -91,11 +92,9 @@ describe('Auth Flow Integration', () => {
   it('allows logout', async () => {
     // Set initial session
     useSessionStore.getState().setSession('fake-token', {
-      sub: '123',
+      id: '123',
       name: 'Admin User',
-      email: 'admin@doligo.com',
       roles: ['admin'],
-      exp: 9999999999,
     });
 
     const user = userEvent.setup();

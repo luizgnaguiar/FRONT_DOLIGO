@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@test/utils';
 import { AuthGuard } from './AuthGuard';
 import { useSessionStore } from '@state/sessionStore';
-import { Navigate, Outlet } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 // Mock session store
 vi.mock('@state/sessionStore', () => ({
