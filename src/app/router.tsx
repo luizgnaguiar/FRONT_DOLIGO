@@ -1,19 +1,36 @@
+import { lazy, Suspense } from 'react';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
-import { LoginPage } from '@modules/auth';
-import { InvoiceListPage, InvoiceCreatePage, InvoiceEditPage } from '@modules/invoice';
-import { StockListPage } from '@modules/stock';
-import { BomListPage, BomDetailPage } from '@modules/bom';
-import { CustomerListPage, LeadListPage } from '@modules/crm';
 import { AuthGuard } from './guards/AuthGuard';
 import { GuestGuard } from './guards/GuestGuard';
 import { AppShell } from './components/Shell/AppShell';
+import { Spinner } from '@shared/ui';
+
+// Lazy loaded modules
+const LoginPage = lazy(() => import('@modules/auth').then(m => ({ default: m.LoginPage })));
+
+// Invoice module
+const InvoiceListPage = lazy(() => import('@modules/invoice').then(m => ({ default: m.InvoiceListPage })));
+const InvoiceCreatePage = lazy(() => import('@modules/invoice').then(m => ({ default: m.InvoiceCreatePage })));
+const InvoiceEditPage = lazy(() => import('@modules/invoice').then(m => ({ default: m.InvoiceEditPage })));
+
+// Stock module
+const StockListPage = lazy(() => import('@modules/stock').then(m => ({ default: m.StockListPage })));
+
+// BOM module
+const BomListPage = lazy(() => import('@modules/bom').then(m => ({ default: m.BomListPage })));
+const BomDetailPage = lazy(() => import('@modules/bom').then(m => ({ default: m.BomDetailPage })));
+
+// CRM module
+const CustomerListPage = lazy(() => import('@modules/crm').then(m => ({ default: m.CustomerListPage })));
+const LeadListPage = lazy(() => import('@modules/crm').then(m => ({ default: m.LeadListPage })));
 
 /**
  * Main Application Router.
  * 
- * According to Phase 5.3 & 5.5:
+ * According to Phase 5.3 & 5.5 & 8.1:
  * - Protects private routes via AuthGuard.
  * - Connects layout to auth state via AppShell.
+ * - Implements code splitting per route via lazy/Suspense.
  */
 export const router = createBrowserRouter([
   {
@@ -21,7 +38,15 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/login',
-        element: <LoginPage />,
+        element: (
+          <Suspense fallback={
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+              <Spinner size="lg" />
+            </div>
+          }>
+            <LoginPage />
+          </Suspense>
+        ),
       },
     ],
   },

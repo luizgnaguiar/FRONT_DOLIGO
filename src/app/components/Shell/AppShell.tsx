@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import { AppLayout, Button, Text } from '@shared/ui';
+import { AppLayout, Button, Text, Spinner } from '@shared/ui';
 import { useSessionStore } from '@state/sessionStore';
 import { useLogout } from '@modules/auth';
 
 /**
  * AppShell.
  * 
- * According to Phase 5.5:
+ * According to Phase 5.5 & 8.1:
  * - Connects layout to auth state.
  * - Displays basic user info.
  * - Integrates logout action.
+ * - Provides Suspense boundary for lazy loaded routes.
  */
 export const AppShell: React.FC = () => {
   const user = useSessionStore((state) => state.user);
@@ -32,7 +33,13 @@ export const AppShell: React.FC = () => {
 
   return (
     <AppLayout renderHeaderActions={renderHeaderActions}>
-      <Outlet />
+      <Suspense fallback={
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+          <Spinner size="lg" />
+        </div>
+      }>
+        <Outlet />
+      </Suspense>
     </AppLayout>
   );
 };
