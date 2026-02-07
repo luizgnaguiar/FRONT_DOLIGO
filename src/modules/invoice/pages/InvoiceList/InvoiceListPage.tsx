@@ -1,19 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useInvoices } from '../../hooks/useInvoices';
-import { VirtualTable, type Column, Text, Skeleton, Button, Can } from '@shared/ui';
+import { type Column, Text, Skeleton, Button, Can, Spinner } from '@shared/ui';
 import type { InvoiceDTO } from '@api/dtos/invoice';
 import { mapErrorCodeToMessage } from '@api/errors';
 import styles from './InvoiceList.module.css';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const VirtualTable = lazy(() => import('@shared/ui/Table/VirtualTable').then(m => ({ default: m.VirtualTable }))) as any;
+
 /**
  * InvoiceListPage.
  * 
- * According to Phase 6.2 & 6.7:
+ * According to Phase 6.2 & 6.7 & 8.2:
  * - Table with mandatory virtualization.
  * - RBAC integration for actions.
+ * - Lazy loading of the heavy VirtualTable component.
  */
-
 export const InvoiceListPage: React.FC = () => {
   const [page, setPage] = useState(1);
   const limit = 20;
@@ -102,12 +105,14 @@ export const InvoiceListPage: React.FC = () => {
           </div>
         ) : (
           <>
-            <VirtualTable
-              columns={columns}
-              data={data?.data || []}
-              height="600px"
-              emptyMessage="Nenhuma invoice encontrada."
-            />
+            <Suspense fallback={<div style={{ height: '600px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}><Spinner /></div>}>
+              <VirtualTable
+                columns={columns}
+                data={data?.data || []}
+                height="600px"
+                emptyMessage="Nenhuma invoice encontrada."
+              />
+            </Suspense>
 
             <footer className={styles.pagination}>
               <button

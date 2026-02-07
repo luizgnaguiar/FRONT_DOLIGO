@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useBom } from '../../hooks/useBoms';
-import { BomTree } from '../../components/BomTree/BomTree';
-import { Text, Skeleton, Button } from '@shared/ui';
+import { Text, Skeleton, Button, Spinner } from '@shared/ui';
 import { mapErrorCodeToMessage } from '@api/errors';
 import styles from './BomDetail.module.css';
 
+const BomTree = lazy(() => import('../../components/BomTree/BomTree').then(m => ({ default: m.BomTree })));
+
+/**
+ * BomDetailPage.
+ * 
+ * According to Phase 6.5 & 8.2:
+ * - Hierarchical visualization.
+ * - Lazy loading of the heavy recursive tree component.
+ */
 export const BomDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
@@ -57,7 +65,9 @@ export const BomDetailPage: React.FC = () => {
             <div className={styles.treeSection}>
               <Text size="base" weight="bold" className={styles.sectionTitle}>Componentes</Text>
               <div className={styles.treeWrapper}>
-                <BomTree components={data.components} />
+                <Suspense fallback={<Spinner size="sm" />}>
+                  <BomTree components={data.components} />
+                </Suspense>
               </div>
             </div>
           </div>
