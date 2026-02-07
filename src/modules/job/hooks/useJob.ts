@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { jobService } from '@api/services/job';
 import { useSessionStore } from '@state/sessionStore';
 import type { JobDTO } from '@api/dtos/job';
+import { shouldPollJob } from '../utils';
 
 export const JOB_QUERY_KEYS = {
   all: ['jobs'] as const,
@@ -20,16 +21,13 @@ export const useJob = (id: string, options: { interval?: number; enabled?: boole
     refetchInterval: (query) => {
       const data = query.state.data as JobDTO | undefined;
       
-      if (!data) return interval;
-
-      // Stop polling if final state reached
-      if (['COMPLETED', 'FAILED', 'CANCELLED'].includes(data.status)) {
-        return false;
+      // If no data yet, keep polling. If has data, check status.
+      if (!data || shouldPollJob(data.status)) {
+        return interval;
       }
 
-      return interval;
+      return false;
     },
-    // Don't refetch on window focus for background jobs typically, unless user wants latest status immediately
     refetchOnWindowFocus: true, 
   });
 };
